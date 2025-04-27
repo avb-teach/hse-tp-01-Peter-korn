@@ -37,3 +37,7 @@ if [ ! -d "$input_dir" ]; then
 fi
 
 mkdir -p "$output_dir"
+
+while IFS= read -r -d '' file; do
+    copyFile "$file" "$output_dir"
+done < <(find "$input_dir" -print0)
