@@ -8,7 +8,7 @@ copyFile() {
     local directoryPath="$2"
     local fileName=$(basename "$filePath")
     local name="${fileName%.*}"
-    local extension="${fileName##*.}"
+    local extension="${fileName##*.}"   
 
     local target="$directoryPath/$fileName"
     local counter=1
@@ -38,6 +38,6 @@ fi
 
 mkdir -p "$output_dir"
 
-while [ IFS= read -r -d $'\0' file ]; do
+while IFS= read -r -d $'\0' file; do
     copyFile "$file" "$output_dir"
 done < <(find "$input_dir" -type f -print0)
