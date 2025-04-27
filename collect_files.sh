@@ -25,19 +25,19 @@ copyFile() {
     cp "$filePath" "$target"
 }
 
-if [ "$#" -ne 2 ]; then
+if "$#" -ne 2; then
     exit 1
 fi
 
 input_dir="$1"
 output_dir="$2"
 
-if [ ! -d "$input_dir" ]; then
+if ! -d "$input_dir"; then
     exit 1
 fi
 
 mkdir -p "$output_dir"
 
-while IFS= read -r -d '' file; do
+while IFS= read -r -d $'\0' file; do
     copyFile "$file" "$output_dir"
-done < <(find "$input_dir" -print0)
+done < <(find "$input_dir" -type f -print0)
