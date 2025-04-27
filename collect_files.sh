@@ -32,7 +32,7 @@ fi
 input_dir="$1"
 output_dir="$2"
 
-if [ test ! -d "$input_dir" ]; then
+if [ ! -d "$input_dir" ]; then
     exit 1
 fi
 
